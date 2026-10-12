@@ -8,7 +8,7 @@ from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
-
+from sklearn.metrics import recall_score, f1_score
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from xgboost import XGBClassifier
@@ -124,7 +124,15 @@ for name, model in models.items():
     y_pred = model.predict(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
-    results.append((name, accuracy))
+    recall = recall_score(y_test, y_pred, zero_division=0)
+    f1 = f1_score(y_test, y_pred, zero_division=0)
+
+    results.append({
+        "name": name,
+        "recall": recall,
+        "f1": f1,
+        "accuracy": accuracy
+    })
 
     print(f"Accuracy: {accuracy:.4f}")
     print("\nClassification Report:")
@@ -145,9 +153,37 @@ print("\n" + "=" * 60)
 print("MODEL COMPARISON")
 print("=" * 60)
 
-for name, accuracy in sorted(
-    results, key=lambda item: item[1], reverse=True
+for result in sorted(
+    results,
+    key=lambda r: (r["recall"], r["f1"], r["accuracy"]),
+    reverse=True
 ):
-    print(f"{name}: {accuracy:.4f}")
-
+    print(f"\nModel: {result['name']}")
+    print(f"Accuracy: {result['accuracy']:.4f}")
+    print(f"Recall:   {result['recall']:.4f}")
+    print(f"F1-score: {result['f1']:.4f}")
+    
 print("\nTraining completed successfully.")
+
+
+# Select the best-performing model
+best_result = max(
+    results,
+    key=lambda r: (r["recall"], r["f1"], r["accuracy"])
+)
+
+best_model_name = best_result["name"]
+
+model_files = {
+    "Logistic Regression": "logistic_regression.pkl",
+    "Random Forest": "random_forest.pkl",
+    "XGBoost": "xgboost.pkl"
+}
+
+print("\nBest model:", best_model_name)
+print("Recall:", round(best_result["recall"], 4))
+print("F1-score:", round(best_result["f1"], 4))
+print("Accuracy:", round(best_result["accuracy"], 4))
+
+with open("models/best_model.txt", "w") as file:
+    file.write(model_files[best_model_name])
