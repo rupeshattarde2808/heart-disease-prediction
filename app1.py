@@ -28,7 +28,7 @@ st.markdown("""
 <style>
     .stApp {
         background-color: #101116;
-        color: #F2F2F5;
+        color: #FFD700;
     }
 
     [data-testid="stSidebar"] {
@@ -214,7 +214,7 @@ with st.sidebar:
 
     with st.form("patient_form"):
 
-        st.markdown("### 👤 Demographics")
+        st.markdown("###  Demographics")
 
         age = st.number_input(
             "Age (years)",
@@ -279,7 +279,7 @@ with st.sidebar:
             [0, 1, 2, 3]
         )
 
-        st.markdown("### 🔬 Test Results")
+        st.markdown("###  Test Results")
 
         fbs = st.selectbox(
             "Fasting blood sugar > 120 mg/dl?",
@@ -460,7 +460,7 @@ with tab1:
 
         st.divider()
 
-        st.markdown("### 📊 Risk Assessment Results")
+        st.markdown("### Risk Assessment Results")
 
         model_names = list(results.keys())
         columns = st.columns(len(model_names))
