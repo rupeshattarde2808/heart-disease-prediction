@@ -15,7 +15,7 @@
 
 ---
 
-## 📌 Overview
+##  Overview
 
 **Cardio-Scope** is a machine learning project that classifies heart disease status using patient health information. It provides an interactive web dashboard where users can enter clinical measurements, generate predictions, and compare the outputs of multiple trained machine learning models.
 
@@ -29,7 +29,7 @@
 *  **Model Score Comparison** — View positive-class and negative-class model scores.
 *  **Interactive Visualizations** — Explore model comparisons using bar charts, line charts, and progress indicators.
 
-## 🖥️ Dashboard Preview
+##  Dashboard Preview
 
 The dashboard is designed around three main sections:
 
@@ -40,7 +40,7 @@ The dashboard is designed around three main sections:
 | Model Information   | Inspect the available trained models and understand their outputs. |
 
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 | Technology                    | Purpose                                       |
 | ----------------------------- | --------------------------------------------- |
@@ -83,7 +83,7 @@ The following are the previously observed test-set accuracy results from this pr
 
 **Evaluation note:** Accuracy alone does not establish clinical suitability. Model evaluation should also consider precision, recall, F1-score, confusion matrices, calibration, and performance on representative independent data.
 
-## ⚙️ Installation and Setup
+##  Installation and Setup
 
 Follow these steps to run the project locally.
 
@@ -193,7 +193,7 @@ The original `num` target is converted into a binary classification target durin
 
 These classes represent the training target, not a confirmed clinical diagnosis. The application does not identify a specific heart disease type.
 
-## 📈 Understanding Model Scores
+##  Understanding Model Scores
 
 The dashboard displays model-estimated probabilities for the two classes.
 
