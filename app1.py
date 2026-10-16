@@ -28,7 +28,7 @@ st.markdown("""
 <style>
     .stApp {
         background-color: #101116;
-        color: #FFD700;
+        color: #FFFFFF;
     }
 
     [data-testid="stSidebar"] {
@@ -208,7 +208,7 @@ if "assessment" not in st.session_state:
 
 
 with st.sidebar:
-    st.markdown("## 🩺 Patient Health Information")
+    st.markdown("## Patient Health Information")
     st.caption("Enter the patient's available health measurements.")
     st.divider()
 
